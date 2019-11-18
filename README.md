@@ -24,3 +24,9 @@ Copy over hidden files to home directory:
 ```bash
 $ cp {.bash_profile,.inputrc,.screenrc,.vimrc} ~/
 ```
+
+Generate a public/private keypair to use as a deploy key for this box (will be stored in `~/.ssh/id_rsa.pub`):
+```bash
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+(Hit enter through defaults FIXME: should this have a PW?)

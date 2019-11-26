@@ -57,9 +57,11 @@ $ cp bitcoin.conf ~/.bitcoin/
 
 ```
 
-Start bitcoin GUI (path is relative:
+Start bitcoin GUI (path is relative):
 ```bash
 $ /usr/local/bin/bitcoin-qt -conf=bitcoin.conf
 ```
-(you can just do `$ bitcoin-qt` directly if you like, this just guarantees you're running the correct version in case you installed multiple)
+Notes:
+* You can do `$ bitcoin-qt` directly if you like, this just guarantees you're running the correct version (in case you installed multiple)
+* You can append `&` afterwards to have it run quietly (and then you can be sure you quit from the app instead of control-C.
 

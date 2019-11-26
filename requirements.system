@@ -2,6 +2,7 @@ colordiff
 curl
 fswatch
 git
+gnupg2
 htop
 icdiff
 ipython

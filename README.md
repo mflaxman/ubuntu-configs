@@ -30,3 +30,11 @@ Generate a public/private keypair to use as a deploy key for this box (will be s
 $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 (Hit enter through defaults FIXME: should this have a PW?)
+
+Start docker and set to run at startup per (these instructions)[https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04]:
+```bash
+$ sudo systemctl start docker
+$ sudo systemctl enable docker
+Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable docker
+```

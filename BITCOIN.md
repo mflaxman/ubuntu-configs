@@ -56,6 +56,7 @@ Copy the config file to the default location:
 $ cp bitcoin.conf ~/.bitcoin/
 
 ```
+FIXME: add Tor setup!
 
 Start bitcoin GUI (path is relative):
 ```bash
@@ -63,6 +64,49 @@ $ /usr/local/bin/bitcoin-qt -conf=bitcoin.conf
 ```
 Notes:
 * You can do `$ bitcoin-qt` directly if you like, this just guarantees you're running the correct version (in case you installed multiple)
-* You can append `&` afterwards to have it run quietly (and then you can be sure you quit from the app instead of control-C.
+* You can append `&` afterwards to have it run quietly (and then you can be sure you properly quit from the app instead of control-C)
 * For mainnet change the `bitcoin.conf` file or call `bitcoin-qt` with `-testnet=0`.
+* For IBD, `-dbcache=4096` (for 16GB RAM) will speed things up (but use more resources)
 
+TODO: instructions to run both test/mainnet simulatneously.
+
+## Esplora (electrs and block explorer)
+
+Clone and enter the repo:
+```bash
+$ git clone https://github.com/Blockstream/esplora && cd esplora
+```
+
+Build the dockerfile (requires `sudo` unless you configure (rootless mode)[https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user]):
+```bash
+$ sudo time docker build -t esplora .
+```
+(this may take a while, perhaps 15 mins)
+
+Run esplora on testnet!
+```bash
+$ sudo time docker run -p 8084:80 \
+           --volume $PWD/data_bitcoin_testnet:/data \
+           --rm -i -t esplora \
+           bash -c "/srv/explorer/run.sh bitcoin-testnet explorer"
+```
+
+Run esplora on main net!
+```bash
+$ sudo docker run -p 8080:80 \
+           --volume $PWD/data_bitcoin_mainnet:/data \
+           --rm -i -t esplora \
+           bash -c "/srv/explorer/run.sh bitcoin-mainnet explorer"
+```
+
+To run either of these in "detached" mode, add a `-d` flag. Then you can see processes like this:
+```bash
+$ sudo docker ps -a
+```
+
+And kill processes like this (grab `CONTAINER ID` from previous command):
+```bash
+$ sudo docker stop 301aef99c1f3
+```
+
+More (here)[https://www.tecmint.com/run-docker-container-in-background-detached-mode/]

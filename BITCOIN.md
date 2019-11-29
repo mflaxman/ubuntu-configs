@@ -72,6 +72,9 @@ TODO: instructions to run both test/mainnet simulatneously.
 
 ## Esplora (electrs and block explorer)
 
+FIXME: confirm this is using my bitcoin core (I think it's not):
+TODO: connect to Electrum server
+
 Clone and enter the repo:
 ```bash
 $ git clone https://github.com/Blockstream/esplora && cd esplora
@@ -83,23 +86,13 @@ $ sudo time docker build -t esplora .
 ```
 (this may take a while, perhaps 15 mins)
 
-Run esplora on testnet!
+Run esplora on testnet and mainnet:
 ```bash
-$ sudo time docker run -p 8084:80 \
-           --volume $PWD/data_bitcoin_testnet:/data \
-           --rm -i -t esplora \
-           bash -c "/srv/explorer/run.sh bitcoin-testnet explorer"
+$ sudo docker run -p 8084:80 --volume $HOME/data_bitcoin_testnet:/data -itd esplora bash -c "/srv/explorer/run.sh bitcoin-testnet explorer"
+$ sudo docker run -p 8080:80 --volume $HOME/data_bitcoin_mainnet:/data -itd esplora bash -c "/srv/explorer/run.sh bitcoin-mainnet explorer"
 ```
 
-Run esplora on main net!
-```bash
-$ sudo docker run -p 8080:80 \
-           --volume $PWD/data_bitcoin_mainnet:/data \
-           --rm -i -t esplora \
-           bash -c "/srv/explorer/run.sh bitcoin-mainnet explorer"
-```
-
-To run either of these in "detached" mode, add a `-d` flag. Then you can see processes like this:
+`-d` flag used to run these in "detached" mode. You can see processes like this:
 ```bash
 $ sudo docker ps -a
 ```

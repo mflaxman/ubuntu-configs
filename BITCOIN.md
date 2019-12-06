@@ -86,10 +86,10 @@ $ sudo time docker build -t esplora .
 ```
 (this may take a while, perhaps 15 mins)
 
-Run esplora on testnet and mainnet:
+Run esplora on testnet and mainnet (`$EXTERNAL_HD` is set in `.profile`):
 ```bash
-$ sudo docker run -p 8084:80 --volume $HOME/data_bitcoin_testnet:/data -itd esplora bash -c "/srv/explorer/run.sh bitcoin-testnet explorer"
-$ sudo docker run -p 8080:80 --volume $HOME/data_bitcoin_mainnet:/data -itd esplora bash -c "/srv/explorer/run.sh bitcoin-mainnet explorer"
+$ sudo docker run -p 8084:80 --volume $EXTERNAL_HD/data_bitcoin_testnet:/data -itd esplora bash -c "/srv/explorer/run.sh bitcoin-testnet explorer"
+$ sudo docker run -p 8080:80 --volume $EXTERNAL_HD/data_bitcoin_mainnet:/data -itd esplora bash -c "/srv/explorer/run.sh bitcoin-mainnet explorer"
 ```
 
 `-d` flag used to run these in "detached" mode. You can see processes like this:

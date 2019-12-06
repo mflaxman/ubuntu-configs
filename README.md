@@ -22,7 +22,7 @@ $ pip3 install -r requirements.txt
 
 Copy over hidden files to home directory:
 ```bash
-$ cp {.bash_profile,.inputrc,.screenrc,.vimrc} ~/
+$ cp {.profile,.inputrc,.screenrc,.vimrc} ~/
 ```
 
 Generate a public/private keypair to use as a deploy key for this box (will be stored in `~/.ssh/id_rsa.pub`):

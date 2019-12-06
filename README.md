@@ -1,5 +1,7 @@
 # Ubuntu Configs
 
+FIXME: Currently it is required to check the box for `run command as login shell` in terminal, not sure why (and if it's correct I should configure it automatically with these scripts).
+
 ## Update your system
 
 ```bash

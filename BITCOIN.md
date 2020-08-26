@@ -91,6 +91,7 @@ Run esplora on testnet and mainnet (`$EXTERNAL_HD` is set in `.profile`):
 $ sudo docker run -p 8084:80 --volume $EXTERNAL_HD/data_bitcoin_testnet:/data -itd esplora bash -c "/srv/explorer/run.sh bitcoin-testnet explorer"
 $ sudo docker run -p 8080:80 --volume $EXTERNAL_HD/data_bitcoin_mainnet:/data -itd esplora bash -c "/srv/explorer/run.sh bitcoin-mainnet explorer"
 ```
+Now visit http://localhost:8080/ for mainnet and http://localhost:8080/ for testnet.
 
 `-d` flag used to run these in "detached" mode. You can see processes like this:
 ```bash

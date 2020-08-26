@@ -51,9 +51,9 @@ Copy files to bin
 $ sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-0.19.0.1/bin/*
 ```
 
-Copy the config file to the default location:
+Copy the config files (`test.bitcoin.conf` and `bitcoin.conf` to the default location):
 ```bash
-$ cp bitcoin.conf ~/.bitcoin/
+$ cp *bitcoin.conf ~/.bitcoin/
 
 ```
 FIXME: add Tor setup!

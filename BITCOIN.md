@@ -7,14 +7,18 @@ Note: you can no longer just use ppa, so these steps are harder.
 Visit the Bitcoin Core Download page and download the latest release as well as signatures in a good directory for the future (then `cd` to that directory):
 https://bitcoin.org/en/download
 ```bash
-$ curl -OJ https://bitcoin.org/bin/bitcoin-core-0.19.0.1/bitcoin-0.19.0.1-x86_64-linux-gnu.tar.gz && \
-	curl -OJ https://bitcoin.org/bin/bitcoin-core-0.19.0.1/SHA256SUMS.asc
+$ curl -OJ https://bitcoin.org/bin/bitcoin-core-0.20.0/bitcoin-0.20.0-x86_64-linux-gnu.tar.gz
+```
+
+Also get the `SHA256SUMS.asc` (unless they're already up-to-date in this repo):
+```
+$ curl -OJ https://bitcoin.org/bin/bitcoin-core-0.20.0/SHA256SUMS.asc
 ```
 
 Verify sha256 of download:
 ```bash
 $ sha256sum -c SHA256SUMS.asc 2>&1 | grep OK
-bitcoin-0.19.0.1-x86_64-linux-gnu.tar.gz: OK
+bitcoin-0.20.0-x86_64-linux-gnu.tar.gz: OK
 ```
 
 Import Wladimir's release key (`01EA 5486 DE18 A882 D4C2 6845 90C8 019E 36C2 E964`):
@@ -48,7 +52,7 @@ $ tar -zvxf bitcoin-0.19.0.1-x86_64-linux-gnu.tar.gz
 
 Copy files to bin
 ```bash
-$ sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-0.19.0.1/bin/*
+$ sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-0.20.0/bin/*
 ```
 
 Copy the config files (`test.bitcoin.conf` and `bitcoin.conf` to the default location):
@@ -60,7 +64,7 @@ FIXME: add Tor setup!
 
 Start bitcoin GUI (path is relative):
 ```bash
-$ /usr/local/bin/bitcoin-qt -conf=bitcoin.conf
+$ /usr/local/bin/bitcoin-qt -conf=test.bitcoin.conf
 ```
 Notes:
 * You can do `$ bitcoin-qt` directly if you like, this just guarantees you're running the correct version (in case you installed multiple)

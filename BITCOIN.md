@@ -72,6 +72,15 @@ Notes:
 * For mainnet change the `bitcoin.conf` file or call `bitcoin-qt` with `-testnet=0`.
 * For IBD, `-dbcache=4096` (for 16GB RAM) will speed things up (but use more resources)
 
+Confirm it's working:
+```bash
+$ bitcoin-cli -chain=test getblockchaininfo
+```
+and
+```bash
+$ bitcoin-cli -chain=main getblockchaininfo
+```
+
 TODO: instructions to run both test/mainnet simulatneously.
 
 ## Esplora (electrs and block explorer)

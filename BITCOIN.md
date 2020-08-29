@@ -112,7 +112,26 @@ Test auth over network (in this case `192.1.168.75` is what you put in your `rpc
 $ bitcoin-cli -rpcconnect=192.1.168.75 -rpcuser=specter -rpcpassword=insecurepasswordgoeshere getblockchaininfo
 ```
 
-TODO: instructions to run both test/mainnet simulatneously.
+#### Advanced
+
+Run both mainnet and testnet in the background:
+```
+$ /usr/local/bin/bitcoin-qt -conf=bitcoin.conf & /usr/local/bin/bitcoin-qt -conf=bitcoin.conf -testnet=1 &
+```
+
+You can verify `bitcoin-qt` is running and bound to the ports you're expecting like this:
+```
+$ netstat -alpn | grep 8332
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+tcp        0      0 192.168.1.75:18332      0.0.0.0:*               LISTEN      17199/bitcoin-qt    
+tcp        0      0 127.0.0.1:18332         0.0.0.0:*               LISTEN      17199/bitcoin-qt    
+tcp        0      0 192.168.1.75:8332       0.0.0.0:*               LISTEN      17162/bitcoin-qt    
+tcp        0      0 127.0.0.1:8332          0.0.0.0:*               LISTEN      17162/bitcoin-qt    
+```
+(you can also pipe to `grep -i listen | grep tcp | grep bitcoin`)
+
+---
 
 ## Esplora (electrs and block explorer)
 

@@ -55,30 +55,61 @@ Copy files to bin
 $ sudo install -m 0755 -o root -g root -t /usr/local/bin bitcoin-0.20.0/bin/*
 ```
 
-Copy the config files (`test.bitcoin.conf` and `bitcoin.conf` to the default location):
+Copy the `bitcoin.conf` config file to the default location:
 ```bash
-$ cp *bitcoin.conf ~/.bitcoin/
+$ cp bitcoin.conf ~/.bitcoin/
 
 ```
 FIXME: add Tor setup!
 
 Start bitcoin GUI (path is relative):
 ```bash
-$ /usr/local/bin/bitcoin-qt -conf=test.bitcoin.conf
+$ /usr/local/bin/bitcoin-qt -conf=bitcoin.conf
 ```
 Notes:
 * You can do `$ bitcoin-qt` directly if you like, this just guarantees you're running the correct version (in case you installed multiple)
-* You can append `&` afterwards to have it run quietly (and then you can be sure you properly quit from the app instead of control-C)
-* For mainnet change the `bitcoin.conf` file or call `bitcoin-qt` with `-testnet=0`.
-* For IBD, `-dbcache=4096` (for 16GB RAM) will speed things up (but use more resources)
+* You can append `&` afterwards to have it run quietly in the background (and then you can be sure you properly quit from the app instead of control-C)
+* For testnet use the same `bitcoin.conf` file but call `bitcoin-qt` with `-testnet=1`.
+* For IBD, `-dbcache=4096` (for 16GB RAM) will speed things up (but use more resources), already set as default in `bitcoin.conf`
 
 Confirm it's working:
 ```bash
-$ bitcoin-cli -chain=test getblockchaininfo
+$ bitcoin-cli getblockchaininfo
 ```
-and
+(for testnet pass in `-chain=test` to set the port. `-chain=main` is otherwise defaulted)
+
+#### Setup Auth
+
+Run script to generate password for username to `specter`:
 ```bash
-$ bitcoin-cli -chain=main getblockchaininfo
+$ python3 rpcauth.py specter insecurepasswordgoeshere
+String to be appended to bitcoin.conf:
+rpcauth=specter:1f48c76b188a325d4188c4830dc37848$87d730596f68faaa827eda20ae96390bcb6b126ff5786ccfcda7a849872c29c0
+Your password:
+insecurepasswordgoeshere
+```
+(Do **not** use these credentials)
+
+and then add `rpcauth` to your `~/.bitcoin/bitcoin.conf` file (under **both** `test` and `main` sections!).
+
+Now figure out your local IP address:
+```
+$ ip address show | grep 192
+inet 192.168.1.75/24 brd 192.168.1.255 scope global dynamic noprefixroute enp4s0
+```
+And add this to your `~/.bitcoin/bitcoin.conf` file (under **both** `test` and `main` sections):
+```
+rpcbind=192.168.1.75
+```
+
+Test auth locally (anything can connect):
+```
+$ bitcoin-cli getblockchaininfo
+```
+
+Test auth over network (in this case `192.1.168.75` is what you put in your `rpcbind` in `bitcoin.conf`):
+```
+$ bitcoin-cli -rpcconnect=192.1.168.75 -rpcuser=specter -rpcpassword=insecurepasswordgoeshere getblockchaininfo
 ```
 
 TODO: instructions to run both test/mainnet simulatneously.

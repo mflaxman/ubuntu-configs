@@ -31,6 +31,11 @@ Python `requirements.txt`:
 $ pip3 install -r requirements.txt
 ```
 
+Install Jekyll:
+```bash
+$ sudo gem install jekyll bundler
+```
+
 ## Configs
 
 Copy over hidden files to home directory:

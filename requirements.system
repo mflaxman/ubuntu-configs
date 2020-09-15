@@ -1,3 +1,4 @@
+build-essential
 colordiff
 curl
 docker.io
@@ -15,6 +16,7 @@ openssh-server
 pinta
 python-gpg
 python3-pip
+ruby-full
 samba
 screen
 silversearcher-ag
@@ -22,3 +24,4 @@ tree
 vim
 # Don't install vim-gtk (https://askubuntu.com/questions/33260/difference-between-vim-gtk-and-vim-gnome)
 vim-gnome
+zlib1g-dev

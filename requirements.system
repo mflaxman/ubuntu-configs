@@ -20,4 +20,5 @@ screen
 silversearcher-ag
 tree
 vim
-vim-gnome #https://askubuntu.com/questions/33260/difference-between-vim-gtk-and-vim-gnome
+# Don't install vim-gtk (https://askubuntu.com/questions/33260/difference-between-vim-gtk-and-vim-gnome)
+vim-gnome

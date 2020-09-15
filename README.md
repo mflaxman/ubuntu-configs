@@ -23,7 +23,7 @@ $ curl -OJ https://raw.githubusercontent.com/mflaxman/ubuntu-configs/master/requ
 
 Dependencies come from `requirements.system` using (this trick)[https://stackoverflow.com/a/10123093]:
 ```bash
-$ cat requirements.system | egrep -v "(^#.*|^$)" | xargs sudo apt install -y
+$ cat requirements.system | grep -v "#" | xargs sudo apt install -y
 ```
 
 Python `requirements.txt`:

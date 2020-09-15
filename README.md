@@ -10,6 +10,17 @@ $ sudo apt update && sudo apt upgrade
 
 ## Install software
 
+To do the next step you need to fetch `requirements.system` from this repo, so let's just grab the whole thing now:
+```bash
+$ mkdir $HOME/workspace && cd $HOME/workspace
+$ git clone https://github.com/mflaxman/ubuntu-configs.git && cd ubuntu-configs
+```
+
+Alternatively, you could fetch just `requirements.system` using `curl`:
+```bash
+$ curl -OJ https://raw.githubusercontent.com/mflaxman/ubuntu-configs/master/requirements.system
+```
+
 Dependencies come from `requirements.system` using (this trick)[https://stackoverflow.com/a/10123093]:
 ```bash
 $ cat requirements.system | xargs sudo apt install -y
@@ -27,11 +38,17 @@ Copy over hidden files to home directory:
 $ cp {.profile,.inputrc,.screenrc,.vimrc} ~/
 ```
 
-Generate a public/private keypair to use as a deploy key for this box (will be stored in `~/.ssh/id_rsa.pub`):
+Generate a public/private keypair using ed25519 (more [here](https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54)) to use as a deploy key for this box (will be stored in `~/.ssh/id_ed25519_XXXX.pub`):
 ```bash
-$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+$ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_2020XXDATEHERE -C "you@email.com"
 ```
-(Hit enter through defaults FIXME: should this have a PW?)
+(pick your own naming convention for filename / email address)
+
+You will be prompted for a passphrase, you can skip (hit enter for blank) but a strong passphrase is recommended (store it in a less secure PW manager).
+Then add it to your agent:
+```bash
+
+```
 
 Start docker and set to run at startup per (these instructions)[https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04]:
 ```bash

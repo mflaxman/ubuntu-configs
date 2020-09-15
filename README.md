@@ -45,12 +45,10 @@ $ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_2020XXDATEHERE -C "you@email.com"
 (pick your own naming convention for filename / email address)
 
 You will be prompted for a passphrase, you can skip (hit enter for blank) but a strong passphrase is recommended (store it in a less secure PW manager).
-Then add it to your agent:
-```bash
 
-```
+TODO: add password to your agent:
 
-Start docker and set to run at startup per (these instructions)[https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04]:
+Start docker and set to run at startup per [these instructions](https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04):
 ```bash
 $ sudo systemctl start docker
 $ sudo systemctl enable docker

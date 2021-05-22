@@ -1,4 +1,7 @@
 build-essential
+cargo
+clang
+cmake
 colordiff
 curl
 docker.io
@@ -8,20 +11,18 @@ git
 gnupg2
 htop
 icdiff
-ipython
 jq
 keepassxc
 net-tools
 openssh-server
 pinta
-python-gpg
 python3-pip
 ruby-full
+rustc
 samba
 screen
 silversearcher-ag
 tree
 vim
 # Don't install vim-gtk (https://askubuntu.com/questions/33260/difference-between-vim-gtk-and-vim-gnome)
-vim-gnome
 zlib1g-dev

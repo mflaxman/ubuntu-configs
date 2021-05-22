@@ -5,7 +5,7 @@ FIXME: Currently it is required to check the box for `run command as login shell
 ## Update your system
 
 ```bash
-$ sudo apt update && sudo apt upgrade
+$ sudo apt update && sudo apt upgrade -y
 ```
 
 ## Install software

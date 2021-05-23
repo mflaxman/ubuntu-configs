@@ -11,6 +11,7 @@ git
 gnupg2
 htop
 icdiff
+ipython3
 jq
 keepassxc
 net-tools

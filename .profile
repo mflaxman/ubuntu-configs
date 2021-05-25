@@ -12,7 +12,7 @@ alias ls='ls -GFh'
 
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH
+export PATH="$HOME/gems/bin:$PATH"
 
 # If you have an external HD you want to map to $EXTERNAL_HD:
 # export EXTERNAL_HD="/media/USERNAME_HERE/HDNAME_HERE"

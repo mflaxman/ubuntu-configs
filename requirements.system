@@ -19,6 +19,7 @@ openssh-server
 pinta
 python3-pip
 qrencode
+qtqr
 ruby-full
 rustc
 samba
